@@ -49,6 +49,9 @@ body {
     font-weight: 500;
     cursor: pointer;
 }
+.start-btn:hover {
+    background: #293264;
+}
 
 
 .quizzes {

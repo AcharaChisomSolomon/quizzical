@@ -1,11 +1,20 @@
 const Quiz = ({ quiz }) => { 
-    const { question, options } = quiz
+    const { question, potentialAnswers } = quiz
 
     return (
         <div className="quiz">
             <h3 className="quiz-question">{ question }</h3>
             <div className="quiz-options">
-                {options.map((o, i) => <span key={i} className="quiz-option">{ o }</span>)}
+                {
+                    potentialAnswers
+                        .map(a =>
+                            <span
+                                key={a.id}
+                                className="quiz-option"
+                            >
+                                {a.option}
+                            </span>)
+                }
             </div>
         </div>
     )
