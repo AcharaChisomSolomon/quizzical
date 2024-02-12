@@ -1,8 +1,10 @@
-
+import StartPage from "./components/StartPage"
 
 const App = () => {
   return (
-    <h1>HOLLA</h1>
+    <main className="main">
+      <StartPage />
+    </main>
   )
 }
 
