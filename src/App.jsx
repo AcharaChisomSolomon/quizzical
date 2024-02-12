@@ -43,17 +43,31 @@ const App = () => {
 
   const getObjFromArr = (val, arr) => {
     let newArr = [...arr, val]
-    newArr = shuffleArray(newArr)
-    return newArr.map((val, i) => ({
+    return shuffleArray(newArr.map((val, i) => ({
       option: he.decode(val),
       id: i,
       isSelected: false
-    }))
+    })))
   }
 
 
   const startQuiz = () => {
     setGameInSession(!gameInSession)
+  }
+
+
+  const handleSelection = (questionId, answerId) => {
+    setQuestions(questions.map((q) => {
+      if (q.id === questionId) {
+        q.potentialAnswers = q.potentialAnswers.map((a) => {
+          if (a.id === answerId) {
+            return { ...a, isSelected: !a.isSelected }
+          }
+          return { ...a, isSelected: false }
+        })
+      }
+      return q
+    }))
   }
 
 
@@ -64,7 +78,7 @@ const App = () => {
         && questions.length !== 0
         && <Quizzes
           quizzes={questions}
-
+          handleSelection={handleSelection}
         />}
     </main>
   )

@@ -1,6 +1,6 @@
 import Quiz from "./Quiz";
 
-const Quizzes = ({ quizzes }) => { 
+const Quizzes = ({ quizzes, handleSelection }) => { 
     
     return (
       <div className="quizzes">
@@ -9,6 +9,7 @@ const Quizzes = ({ quizzes }) => {
                     <Quiz
                         key={q.id}
                         quiz={q}
+                        handleSelection={handleSelection}
                     />
                 ))
             }

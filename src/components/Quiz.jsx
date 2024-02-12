@@ -1,5 +1,6 @@
-const Quiz = ({ quiz }) => { 
+const Quiz = ({ quiz, handleSelection }) => { 
     const { question, potentialAnswers } = quiz
+    console.log(potentialAnswers)
 
     return (
         <div className="quiz">
@@ -10,7 +11,8 @@ const Quiz = ({ quiz }) => {
                         .map(a =>
                             <span
                                 key={a.id}
-                                className="quiz-option"
+                                className={a.isSelected ? "quiz-option selected" : "quiz-option"}
+                                onClick={() => handleSelection(quiz.id, a.id)}
                             >
                                 {a.option}
                             </span>)
