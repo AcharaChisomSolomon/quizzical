@@ -81,8 +81,7 @@ body {
     cursor: pointer;
 }
 .quiz-option:hover {
-    background-color: #4d5b9e;
-    color: #f5f7fb;
+    background-color: #d6dbf5;
 }
 .quizzes-btn_container {
     display: flex;
@@ -106,7 +105,6 @@ body {
     background-color: #293264;
 }
 .score-text {
-    display: none;
     font-family: Inter;
     font-weight: 700;
     font-size: 13px;

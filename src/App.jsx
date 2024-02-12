@@ -6,9 +6,7 @@ import StartPage from "./components/StartPage"
 const App = () => {
   const [questions, setQuestions] = useState([])
   const [gameInSession, setGameInSession] = useState(false)
-
-
-  console.log(questions)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
 
   useEffect(() => {
@@ -71,15 +69,42 @@ const App = () => {
   }
 
 
+  const handleSubmission = () => { 
+    let score = 0
+    questions.forEach((q) => {
+      let correctAnswer = q.potentialAnswers.find((a) => a.option === he.decode(q.correct_answer))
+      if (correctAnswer.isSelected) {
+        score++
+      }
+    })
+    return score
+  }
+
+
+  const handleSubmissionClick = () => { 
+    setIsSubmitted(!isSubmitted)
+  }
+
+
+  const resetGame = () => { 
+    setGameInSession(!gameInSession)
+    setIsSubmitted(!isSubmitted)
+  }
+
+
   return (
     <main className="main">
       {!gameInSession && <StartPage startQuiz={startQuiz} />}
       {gameInSession
-        && questions.length !== 0
         && <Quizzes
           quizzes={questions}
           handleSelection={handleSelection}
-        />}
+          isSubmitted={isSubmitted}
+          handleSubmission={handleSubmission}
+          handleSubmissionClick={handleSubmissionClick}
+          resetGame={resetGame}
+        />
+      }
     </main>
   )
 }
